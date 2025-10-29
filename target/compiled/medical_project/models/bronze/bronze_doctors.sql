@@ -12,6 +12,6 @@ SELECT
   is_active,
   hired_date,
   CURRENT_TIMESTAMP() AS dbt_loaded_at,
-  '8ddbe747-2519-4551-8319-62c228b382f1' AS dbt_batch_id
+  '047bd0cd-5f32-4eba-bff0-54847885ed8b' AS dbt_batch_id
 FROM MEDICAL_DB.RAW.doctors
 WHERE doctor_id IS NOT NULL
