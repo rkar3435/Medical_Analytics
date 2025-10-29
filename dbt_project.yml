@@ -1,7 +1,7 @@
 name: 'medical_project'
 version: '1.0.0'
 config-version: 2
-#This is the profile  name
+#This is the profile names
 profile: 'medical_project'
 
 model-paths: ["models"]
