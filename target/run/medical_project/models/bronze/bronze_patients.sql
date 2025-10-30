@@ -26,7 +26,7 @@ SELECT
   created_at,
   created_at AS updated_at,
   CURRENT_TIMESTAMP() AS dbt_loaded_at,
-  '047bd0cd-5f32-4eba-bff0-54847885ed8b' AS dbt_batch_id
+  '6f8acd78-335b-4b2f-affc-df45076778f6' AS dbt_batch_id
 FROM MEDICAL_DB.RAW.patients
 WHERE patient_id IS NOT NULL
     )
