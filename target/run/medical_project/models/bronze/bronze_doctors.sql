@@ -4,7 +4,7 @@
 
 create or replace transient table MEDICAL_DB.bronze.bronze_doctors
     
-
+    
     
     as (
 
@@ -20,7 +20,7 @@ SELECT
   is_active,
   hired_date,
   CURRENT_TIMESTAMP() AS dbt_loaded_at,
-  '8ddbe747-2519-4551-8319-62c228b382f1' AS dbt_batch_id
+  '6f8acd78-335b-4b2f-affc-df45076778f6' AS dbt_batch_id
 FROM MEDICAL_DB.RAW.doctors
 WHERE doctor_id IS NOT NULL
     )

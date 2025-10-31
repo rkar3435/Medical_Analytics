@@ -4,7 +4,7 @@
 
 create or replace transient table MEDICAL_DB.gold.dim_patients
     
-
+    
     
     as (
 

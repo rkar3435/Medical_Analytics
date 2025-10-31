@@ -1,0 +1,22 @@
+
+      begin;
+    merge into "MEDICAL_DB"."SNAPSHOTS"."DOCTORS_SNAPSHOT" as DBT_INTERNAL_DEST
+    using "MEDICAL_DB"."SNAPSHOTS"."DOCTORS_SNAPSHOT__dbt_tmp" as DBT_INTERNAL_SOURCE
+    on DBT_INTERNAL_SOURCE.dbt_scd_id = DBT_INTERNAL_DEST.dbt_scd_id
+
+    when matched
+     
+       and DBT_INTERNAL_DEST.dbt_valid_to is null
+     
+     and DBT_INTERNAL_SOURCE.dbt_change_type in ('update', 'delete')
+        then update
+        set dbt_valid_to = DBT_INTERNAL_SOURCE.dbt_valid_to
+
+    when not matched
+     and DBT_INTERNAL_SOURCE.dbt_change_type = 'insert'
+        then insert ("DOCTOR_ID", "DOCTOR_NAME", "SPECIALTY", "SPECIALTY_CATEGORY", "DEPARTMENT_ID", "PHONE", "EMAIL", "LICENSE_NUMBER", "YEARS_EXPERIENCE", "EXPERIENCE_LEVEL", "CARE_CATEGORY", "IS_ACTIVE", "IS_ACTIVE_FLAG", "HIRED_DATE", "TENURE_YEARS", "DBT_LOADED_AT", "DBT_BATCH_ID", "DBT_UPDATED_AT", "DBT_VALID_FROM", "DBT_VALID_TO", "DBT_SCD_ID")
+        values ("DOCTOR_ID", "DOCTOR_NAME", "SPECIALTY", "SPECIALTY_CATEGORY", "DEPARTMENT_ID", "PHONE", "EMAIL", "LICENSE_NUMBER", "YEARS_EXPERIENCE", "EXPERIENCE_LEVEL", "CARE_CATEGORY", "IS_ACTIVE", "IS_ACTIVE_FLAG", "HIRED_DATE", "TENURE_YEARS", "DBT_LOADED_AT", "DBT_BATCH_ID", "DBT_UPDATED_AT", "DBT_VALID_FROM", "DBT_VALID_TO", "DBT_SCD_ID")
+
+;
+    commit;
+  
